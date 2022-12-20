@@ -1,0 +1,28 @@
+{% extends 'base/main.html' %}
+{% block content %}
+
+<div class="header-bar" id="header-bar">
+    <a href="{% url 'tasks' %}">&#8592; Back</a> 
+</div>
+
+<div class="card-body">
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- {{form.as_p}} -->
+        <label>{{form.title.label}}</label>
+        {{form.title}}
+        <label>{{form.description.label}}</label>
+        {{form.description}}
+        <label>{{form.media.label}}</label>
+        {{form.media}}
+        <label>{{form.complete.label}}</label>
+        {{form.complete}}
+        
+        <input class="button" type="submit" value="submit" id="learn">
+    </form>
+
+</div>
+
+{% endblock content %}
+

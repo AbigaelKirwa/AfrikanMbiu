@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="logo">
+        <img src='{% static "images/logo.png" %}' alt="">
+    </div>
+    <div class="dots">
+        <button onclick="yellowColorFunction()" id="yellow" class="yellow"></button>
+        <button onclick="redColorFunction()" class="red"></button>
+        <button onclick="greyColorFunction()" class="grey"></button>
+        <button onclick="greenColorFunction()" class="green"></button>
+    </div>
+    <div class="words">
+        <p class="brief">A FUN PLATFORM TO LEARN ABOUT AFRICA<br>BY PLAYING FUN GAMES & PARTICIPATING<br>IN CHALLENGES</p>
+        <button class="learn">learn more</button>
+        <div class="play-and-words">
+            <p>Listen to african drums</p>
+            <button id="play-btn" class="music-btn" onclick="playSound()">&#9658;</button>
+            <button id="pause-btn" class="music-pause-btn" onclick="pauseSound()">&#9612;&#9612;</button>
+            <audio id="mySong">
+                <source src="{% static 'music/drums.mp3' %}" type="audio/mp3">
+            </audio>
+        </div>
+    </div>
+    <div class="container">
+        {% block content %}
+
+        {% endblock content %}
+    </div>
+
+    <script>
+        function yellowColorFunction() {
+            $('body').css('background', '#BB9B5E');
+            document.getElementById("learn").style.backgroundColor = "#BB9B5E";
+            document.getElementById("header-bar").style.background = "url('{% static 'images/yellow-header.png' %}')";
+            document.getElementById("header-bar").style.backgroundPosition = "center";
+        }
+        function redColorFunction() {
+            $('body').css('background', '#BA3030');
+            document.getElementById("learn").style.backgroundColor = "#BA3030";
+            document.getElementById("header-bar").style.background = "url('{% static 'images/red-header.png' %}')";
+            document.getElementById("header-bar").style.backgroundPosition = "center";
+        }
+        function greyColorFunction() {
+            $('body').css('background', '#474545');
+            document.getElementById("learn").style.backgroundColor = "#474545";
+            document.getElementById("header-bar").style.background = "url('{% static 'images/grey-header.png' %}')";
+            document.getElementById("header-bar").style.backgroundPosition = "center";
+        }
+        function greenColorFunction() {
+            $('body').css('background', '#1E4629');
+            document.getElementById("learn").style.backgroundColor = "#1E4629";
+            document.getElementById("header-bar").style.background = "url('{% static 'images/header-bar.png' %}')";
+            document.getElementById("header-bar").style.backgroundPosition = "center";
+        }
+        var mySong = document.getElementById("mySong");
+        var play_btn = document.getElementById("play-btn");
+        var pause_btn = document.getElementById("pause-btn");
+    
+        play_btn.onclick= function(){
+                mySong.play();
+            }
+        pause_btn.onclick= function(){
+           
+                mySong.pause();
+        }
+    </script>
+</body>
+</html>
